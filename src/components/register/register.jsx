@@ -5,6 +5,8 @@ import * as Yup from 'yup'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
+
 
 export default function Register() {
 
@@ -68,6 +70,10 @@ export default function Register() {
   })
   return (
    <>
+    <Helmet>
+        <title>register</title>
+        <meta name="description" content="Helmet application" />
+    </Helmet>
 
     <h1 className='text-center mt-5'>...register form</h1>
     {msgError?<div className="alert alert-warning">{msgError}</div>:''}

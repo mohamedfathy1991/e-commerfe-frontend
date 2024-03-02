@@ -6,12 +6,18 @@ import { createContext, useState } from "react";
 
 export let UserContext= createContext()
 export default function UserContextProvider(props){
-      const[user, setUser] = useState(null) 
-      let  data= null
-      if(user != null){
-            
-            data= (jwtDecode(user))
+      const[user, setUser] = useState(null)
+      let  data= null 
+      if(localStorage.getItem('token')){
+            data= (jwtDecode(localStorage.getItem('token')))
+
+
       }
+     
+      // if(user != null){
+            
+      //       data= (jwtDecode(user))
+      // }
 
 
       return(

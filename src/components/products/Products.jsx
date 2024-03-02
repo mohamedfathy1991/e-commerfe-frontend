@@ -1,3 +1,5 @@
+
+
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "../loading/Loading";
@@ -9,7 +11,7 @@ import { Cartcontext } from "../../context/Cartcontext";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 
-export default function Home() {
+export default function Products() {
   let {
     addItemToCart,
     setcartitem,
@@ -163,16 +165,14 @@ export default function Home() {
 
   return (
     <>
-    <Helmet>
-        <title>home</title>
+     <Helmet>
+        <title>products</title>
         <meta name="description" content="Helmet application" />
     </Helmet>
       {/* <button onClick={()=>refetch()} >Click me to fetch data</button> */}
       <div className="container">
-        <h1>Category</h1>
-        <Categoryslider />
-        <Mainslider />
-
+        <h1>products</h1>
+     
         <input
           onChange={serchbyitem}
           className=" form-control my-3  border"
@@ -260,3 +260,4 @@ export default function Home() {
     </>
   );
 }
+

@@ -96,6 +96,15 @@ export default function Navbar() {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link " aria-current="page" to="washlist">
+                  washlist
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link " aria-current="page" to="allorders">
+allorder                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link " aria-current="page" to="cart">
                   Cart
                 </NavLink>

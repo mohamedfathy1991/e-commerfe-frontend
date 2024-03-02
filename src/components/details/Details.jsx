@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../loading/Loading";
 import { Cartcontext } from "../../context/Cartcontext";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet";
 
 
 export default function Details() {
@@ -65,6 +66,10 @@ export default function Details() {
 
   return (
     <>
+     <Helmet>
+        <title>details</title>
+        <meta name="description" content="Helmet application" />
+    </Helmet>
       <div className=" container mt-4">
         <div className="row align-items-center ">
           <div className="col-md-4  ">

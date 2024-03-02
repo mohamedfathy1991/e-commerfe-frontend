@@ -2,7 +2,7 @@ import { createBrowserRouter ,RouterProvider} from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import Login from './components/login/Login';
 import Register from './components/register/register';
- import Product from './components/products/Product';
+ import Product from './components/products/Products';
  import Home from './components/Home/Home';
  import Notfound from './components/notfound/Notfound';
  import Category from './components/category/category';
@@ -18,9 +18,16 @@ import {
   
   
 } from '@tanstack/react-query'
+
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Details from './components/details/Details';
 import Cartcontextprovider from './context/Cartcontext';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import Checkout from './components/checkout/Checkout';
+import Washlist from './components/washlist/washlist';
+import Orders from './orders/Orders';
+import Products from './components/products/Products';
 const queryClient = new QueryClient()
 
 
@@ -33,10 +40,13 @@ function App() {
     {path:'cart',element:<GardProtect><Cart/></GardProtect>},
     {path:'brand',element:<GardProtect><Brands/></GardProtect>},
     {path:'prdouctdetails/:id',element:<GardProtect><Details/></GardProtect>},
+    {path:'checkout/:id',element:<GardProtect><Checkout/></GardProtect>},
   
     {path:'category',element:<GardProtect><Category/></GardProtect>},
+    {path:'washlist',element:<GardProtect><Washlist/></GardProtect>},
+    {path:'allorders',element:<GardProtect><Orders/></GardProtect>},
     
-    {path:'Product',element:<GardProtect><Product/></GardProtect>},
+    {path:'Product',element:<GardProtect><Products/></GardProtect>},
     {path:'forgetpassword',element:<ForgetPassword/>},
 
     {index:true,element:<Register/>},
@@ -54,10 +64,11 @@ function App() {
   
 
   return (
-    <>
+    
+<Provider  store={store}>
 
 
- <QueryClientProvider client={queryClient}>
+<QueryClientProvider client={queryClient}>
   <ReactQueryDevtools>
   </ReactQueryDevtools>
   <Cartcontextprovider>
@@ -74,9 +85,8 @@ function App() {
   
 
  </QueryClientProvider>
-   
+</Provider>
     
-    </>
     
   );
 }

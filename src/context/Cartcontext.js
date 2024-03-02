@@ -10,6 +10,8 @@ import React from 'react'
 export let Cartcontext = createContext()
 export default function Cartcontextprovider(props) {
       let [cartitem,setcartitem]=useState('')
+      let [cartid,setcartid]=useState('')
+      let [washlistitems,setwashlistitems]=useState([])
       
       
     async  function addItemToCart(productid){
@@ -52,13 +54,54 @@ export default function Cartcontextprovider(props) {
                   }
             })
       }
+
+      function updateCartitem(itemid,count){
+            return   axios.put(`https://ecommerce.routemisr.com/api/v1/cart/${itemid}`,{
+                  count:count
+
+            },{
+                  headers:{
+                        token:localStorage.getItem('token')
+                  }
+            })
+
+      }
+     async function checkOut(value,id){
+           try{
+             return  await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:3000/`,
+            {
+                  shippingAddress:value
+            },
+            {
+                  headers:{
+                        token:localStorage.getItem('token')
+                           }
+            }
+             )
+            
+
+           }catch(err){
+            console.log(err)
+
+           }
+
+           
+      }
+      async function getwashlist(){
+            return axios.get('https://ecommerce.routemisr.com/api/v1/wishlist',{
+                  headers:{
+                        token:localStorage.getItem('token')
+                  }
+            })
+
+      }
      
 
 
   return (
 
       
-    <Cartcontext.Provider  value={{getCart,addItemToCart,deletitemCart,deletallCart ,cartitem,setcartitem}}>
+    <Cartcontext.Provider  value={{getwashlist,setwashlistitems,washlistitems,cartid,setcartid,getCart,updateCartitem,addItemToCart,deletitemCart,deletallCart ,cartitem,setcartitem ,checkOut}}>
       {props.children}
 
 

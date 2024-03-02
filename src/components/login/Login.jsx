@@ -31,7 +31,6 @@ export default function Login() {
         value
       );
       setUser(req.data.token);
-      console.log(req)
       localStorage.setItem("token", req.data.token);
       if (req.data.message == "success") {
         let requests = await getCart().catch(err=>{

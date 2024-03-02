@@ -64,3 +64,21 @@ a , a:hover{
 .active{
     color: var(--main-color) !important ;
 }
+.red{
+    color: red;
+}
+.pointer{
+    cursor: pointer;
+}
+
+.check-network{
+    color: white;
+    
+font-size: 20px;
+    position:fixed;
+ 
+    background:rgb(255, 0, 0,.6);
+    left: 50%;
+    bottom: 50%;
+    
+}

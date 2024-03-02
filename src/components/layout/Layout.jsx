@@ -3,7 +3,7 @@ import React, { useContext, useEffect  } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../navbar/Navbar'
 import { UserContext } from '../../context/UserContext'
-
+import { Offline } from 'react-detect-offline'
 
 
 
@@ -30,8 +30,12 @@ export default function Layout() {
   return (
     <>
     <Navbar/>
-
     <div className="container">
+
+    <div className="check-network" >
+    <Offline>  check your conection</Offline>
+
+    </div>
     <Outlet/>
 
     </div>
